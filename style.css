@@ -1,3 +1,22 @@
+.inputDiv{
+    display: flex;
+    justify-content: center;
+}
+.input{
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    /* border-color: white; */
+    padding: 5px;
+}
+.input::placeholder{
+    color: white;
+    text-align: center;
+}
+.input:focus{
+    outline: white;
+}
+
 @media only screen and (max-width:500px){
     #book-form{
         display: flex;
@@ -8,5 +27,9 @@
     }
     .btn{
         margin-top: 10%;
+    }
+    .input{
+        /* padding: 0; */
+        margin-bottom: 10px;
     }
 }

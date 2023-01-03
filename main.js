@@ -28,7 +28,7 @@ class UI {
         const list = document.querySelector('#book-list');
         const row = document.createElement('tr');
         row.innerHTML = ` 
-      <td>${book.title}</td>
+      <td class="titleTd">${book.title}</td>
       <td>${book.author}</td>
       <td>${book.isbn}</td>
       <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
@@ -52,6 +52,19 @@ class UI {
           el.parentElement.parentElement.remove();
         }
       }
+    static search(value){
+        let table = document.querySelectorAll('.titleTd')
+        // console.log(table[1].innerText);
+        table.forEach((title)=>{
+            if(title.innerText.toUpperCase().indexOf(value)!= -1){
+               title.parentElement.style.display = '' 
+            }
+            else{
+                title.parentElement.style.display = 'none';
+            }
+        })
+
+    }
 }
 class Store{
     static getBooks(){
@@ -101,4 +114,7 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
     UI.deleteBook(e.target);
     Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
     UI.alertMsg("Book Removed!",'success');
+})
+document.querySelector('.input').addEventListener('keyup',(e)=>{
+    UI.search(e.target.value.toUpperCase());
 })
